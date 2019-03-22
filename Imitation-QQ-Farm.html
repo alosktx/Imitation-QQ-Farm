@@ -1,0 +1,140 @@
+<html>
+<head>
+ <meta http-equiv ="Content-type" content="text/html;charset=utf-8"/>
+ <title>QQ农场</title>
+ <script language="javascript">
+
+var stateflag=0;//状态变量 初始状态为0
+//改变状态
+  function  fun_ChangeState(sflag){
+	if(sflag=='播种'){
+		stateflag=1;
+	}
+	if(sflag=='采摘'){
+		stateflag=2;
+	}
+	if(sflag=='翻地'){
+		stateflag=3;
+	}
+  }
+
+  function  fun_login(){
+	  var userName=document.LoginForm.uname.value;
+	  var userPassword=document.LoginForm.upassword.value;
+	 // alert(userName + "您好，你的密码是" + userPassword);
+	 document.writeln(userName + "您好，你的密码是" + userPassword);
+  }
+  //换图
+  function fun_ChangePic(picflag){
+  	if(stateflag==1){
+  	//播种
+    document.getElementById(picflag).src='./image/seed.jpg';
+    //3秒后自动发芽
+    setTimeout("fun_Bud("+picflag+")",3000);
+  	}
+  	if(stateflag==2){
+  	//采摘
+    document.getElementById(picflag).src='./image/harvest.png';
+  	}
+  	if(stateflag==3){
+  	//翻地
+    document.getElementById(picflag).src='./image/chanzi.jpg';
+    setTimeout("fun_huifu("+picflag+")",1500);
+  	}
+
+  }
+  //发芽
+  function fun_Bud(budid){
+    document.getElementById(budid).src='./image/bud.jpg';
+    //3秒后自动挂果
+    setTimeout("fun_flower("+budid+")",3000);
+  }
+   //挂果
+  function fun_flower(fid){
+    document.getElementById(fid).src='./image/flower.png';
+  }
+  //恢复原样
+  function fun_huifu(fuyuan){
+    document.getElementById(fuyaun).src='./image/none.jpg';
+  }
+
+  //换音乐
+  function fun_ChangeMusic(){
+  	//document.getElementById(100).src='./image/9277.mp3';
+  	document.Mymusic.music1.src='./image/9277.mp3';
+  }
+ </script>
+</head>
+<body>
+<input type="button" name="btn1" value="播种" onclick="fun_ChangeState('播种')" >
+<input type="button" name="btn2" value="采摘" onclick="fun_ChangeState('采摘')" >
+<input type="button" name="btn3" value="翻地" onclick="fun_ChangeState('翻地')" >
+
+<hr color="red">
+
+<table>
+<tr>
+  <td><image src=./image/none.jpg id ="0" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="1" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="2" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="3" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="4" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="5" onclick="fun_ChangePic(this.id)"></td>
+</tr>
+
+<tr>
+  <td><image src=./image/none.jpg id ="6" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="7" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="8" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="9" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="10" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="11" onclick="fun_ChangePic(this.id)"></td>
+</tr>
+
+<tr>
+  <td><image src=./image/none.jpg id ="12" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="13" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="14" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="15" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="16" onclick="fun_ChangePic(this.id)"></td>
+  <td><image src=./image/none.jpg id ="17" onclick="fun_ChangePic(this.id)"></td>
+</tr>
+</table>
+
+<hr color="green">
+
+<form name="LoginForm">
+<div style=background-color:#0C0; width:200px;heigth:500px;>
+<table>
+<tr>
+  <td>用户名:</td>
+  
+  <td><input type="text" name="uname"></td> 
+</tr>
+
+
+<tr>
+  <td>密码:</td>
+  
+  <td><input type="password" name="upassword"></td>
+  
+</tr>
+
+<tr>
+  <td><input type="button" name="login" value="登 录" onClick="fun_login()"></td>
+</tr>
+
+</table>
+</div>
+</form>
+
+<hr color="blue">
+ 
+<form name="Mymusic">
+<embed src=./image/jiandanai.mp3 id="100" name="music1">
+<input type="button" name="btn4" value="9277" onclick="fun_ChangeMusic()" >
+<input type="button" name="btn5" value="简单爱" onclick="fun_ChangeMusic()" >
+</form>
+
+</body>
+</html>
